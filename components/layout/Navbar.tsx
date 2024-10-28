@@ -6,9 +6,10 @@ import { useRouter } from "next/navigation";
 import { useAuth, UserButton } from "@clerk/nextjs";
 import { Button } from "../ui/button";
 
+
 const NavBar = () => {
-  const router = useRouter()
-  const { userId } = useAuth()
+  const router = useRouter();
+  const { userId } = useAuth();
   return (
     <div className="sticky top-0 border border-b-primary/10">
       <Container>
@@ -24,10 +25,16 @@ const NavBar = () => {
             <UserButton />
             {!userId && (
               <>
-                <Button onClick={()=>router.push('/sign-in')} size="sm" variant="outline">
+                <Button
+                  onClick={() => router.push("/sign-in")}
+                  size="sm"
+                  variant="outline"
+                >
                   Sign In
                 </Button>
-                <Button onClick={()=>router.push('/sign-up')} size="sm">Sign Up</Button>
+                <Button onClick={() => router.push("/sign-up")} size="sm">
+                  Sign Up
+                </Button>
               </>
             )}
           </div>
