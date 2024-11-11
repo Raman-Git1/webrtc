@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import NavBar from "@/components/layout/Navbar";
 import Container from "@/components/layout/Container";
+import SocketProvider from "@/providers/SocketProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,10 +33,12 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
-          <main className="flex flex-col min-h-screen bg-secondary">
-            <NavBar />
-            <Container>{children}</Container>
-          </main>
+          <SocketProvider>
+            <main className="flex flex-col min-h-screen bg-secondary">
+              <NavBar />
+              <Container>{children}</Container>
+            </main>
+          </SocketProvider>
         </body>
       </html>
     </ClerkProvider>
